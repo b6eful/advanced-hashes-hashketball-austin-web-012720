@@ -124,9 +124,68 @@ def game_hash
        ]
    }
  } 
-end  
+end
+
+def num_point_scored(player_name)
+  game_hash.each do |team, hash|
+    hash.each do |key, value|
+      if key == :players
+        value.each do |player_hash|
+          if player_hash[:player_name] == players_name
+            return player_hash[:points]
+          end
+        end
+      end
+    end
+  end
+end
+
+def shoe_size(players_name)
+  game_hash.each do |team,hash|
+    hash.each do |key, value|
+      if key == :players
+        value.each do |player_hash|
+          if player_hash[:players_name]== players_name
+            return player_hash[:shoe]
+          end
+        end
+      end
+    end
+  end
+end
+
+def team_colors(team_name)
+  game_hash.each do |team, hash|
+    hash.each do |key, value|
+      if value == team_name
+        return hash[:colors]
+      end
+    end
+  end
+end
+
+def team_names
+  team_names_array = []
   
+  game_hash.map do |team,hash|
+    team_names_array.push(hash[:team_name])
+  end
+  team_names_array
+end
+
+def player_numbers(team_name)
+  jersey_numbers = []
   
+  game_hash.each do |team,hash|
+    if hash[:team_name] ==team_name
+      hash[:players].each.do |player_hash|
+        jersey_numbers.push(player_hash[:number])
+      end
+    end
+  end
+end
+
+
 
 
 
