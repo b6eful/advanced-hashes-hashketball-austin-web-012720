@@ -64,11 +64,6 @@ def hash
        ]
     }
   }
-  :away => {
-    :team_name =>"Charlotte Hornets",
-    
-  }
-
 
 
 
