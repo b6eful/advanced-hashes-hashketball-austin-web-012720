@@ -1,11 +1,11 @@
 require pry
-def hash
-  {
-    :home => {
-      :team_name => "Brooklyn Nets",
-      :colors => ["Black," "White"],
-      :players => [
-        {
+def game_hash
+{
+   :home => {
+     :team_name => "Brooklyn Nets",
+     :colors => ["Black", "White"],
+     :players => [
+       {
          :player_name => "Alan Anderson",
          :number => 0,
          :shoe => 16,
@@ -15,9 +15,9 @@ def hash
          :steals => 3,
          :blocks => 1,
          :slam_dunks => 1
-        },
-        {
-          :player_name => "Reggie Evans",
+       },
+       {
+         :player_name => "Reggie Evans",
          :number => 30,
          :shoe => 14,
          :points => 12,
@@ -26,9 +26,8 @@ def hash
          :steals => 12,
          :blocks => 12, 
          :slam_dunks => 7
-          
-        },
-        {
+       },
+       {
          :player_name => "Brook Lopez",
          :number => 11,
          :shoe => 17, 
@@ -38,8 +37,8 @@ def hash
          :steals => 3,
          :blocks => 1,
          :slam_dunks => 15
-        },
-        {
+       },
+       {
          :player_name => "Mason Plumlee",
          :number => 1,
          :shoe => 19,
@@ -62,8 +61,8 @@ def hash
          :slam_dunks => 1
        }
        ]
-    },
-     :away => {
+   },
+   :away => {
      :team_name => "Charlotte Hornets",
      :colors => ["Turquoise", "Purple"],
      :players => [
