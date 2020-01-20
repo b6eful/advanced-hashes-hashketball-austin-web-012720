@@ -124,67 +124,67 @@ def game_hash
        ]
    }
  } 
-end
+end  
 
-def num_point_scored(player_name)
+def num_points_scored(players_name)
   game_hash.each do |team, hash|
     hash.each do |key, value|
       if key == :players
         value.each do |player_hash|
           if player_hash[:player_name] == players_name
             return player_hash[:points]
-          end
-        end
-      end
-    end
-  end
-end
+          end  
+        end  
+      end  
+    end  
+  end  
+end  
 
 def shoe_size(players_name)
-  game_hash.each do |team,hash|
+  game_hash.each do |team, hash|
     hash.each do |key, value|
-      if key == :players
-        value.each do |player_hash|
-          if player_hash[:players_name]== players_name
-            return player_hash[:shoe]
-          end
-        end
-      end
-    end
+     if key == :players
+       value.each do |player_hash|
+         if player_hash[:player_name] == players_name
+           return player_hash[:shoe]
+         end     
+       end     
+     end 
+    end  
   end
-end
+end  
 
 def team_colors(team_name)
   game_hash.each do |team, hash|
     hash.each do |key, value|
       if value == team_name
-        return hash[:colors]
-      end
-    end
-  end
-end
+       return hash[:colors]
+      end  
+    end  
+  end  
+end  
 
 def team_names
   team_names_array = []
   
-  game_hash.map do |team,hash|
+  game_hash.map do |team, hash|
     team_names_array.push(hash[:team_name])
-  end
+  end 
   team_names_array
-end
+end  
 
 def player_numbers(team_name)
   jersey_numbers = []
   
-  game_hash.each do |team,hash|
-    if hash[:team_name] ==team_name
-      hash[:players].each.do |player_hash|
+  game_hash.each do |team, hash|
+    if hash[:team_name] == team_name
+      hash[:players].each do |player_hash|
         jersey_numbers.push(player_hash[:number])
-      end
-    end
+      end  
+    end  
   end
   jersey_numbers
-end
+end  
 
 def player_stats(players_name)
   new_hash = {}
@@ -201,35 +201,34 @@ def player_stats(players_name)
         end  
       end  
     end  
-  end 
-new_hash.delete(:players_name)
+  end  
+new_hash.delete(:player_name)
 new_hash
-end
-
+end  
 
 def big_shoe_rebounds
   hash_compare = {}
   
   game_hash.each do |team, hash|
     hash.each do |key, value|
-      if key == :players
-        value.each do |player_hash|
-          hash_compare[player_hash[:players_name]] = players_name[:shoe]
-        end
-      end
-    end
+     if key == :players
+       value.each do |player_hash|
+         hash_compare[player_hash[:player_name]] = player_hash[:shoe]
+       end
+     end   
+    end  
   end
   max_value = 0
   key_for_max_value = nil
   
   hash_compare.each_pair do |key, value|
-    if value > max_value
-      max_value = value
-      key_for_max_value = key
-    end
-  end
+   if value > max_value
+     max_value = value
+     key_for_max_value = key
+   end
+  end 
   return player_stats(key_for_max_value)[:rebounds]
-end
+end  
 
 def most_points_scored
   points_hash = {}
@@ -321,10 +320,3 @@ def long_name_steals_a_ton?
     return true
   end
 end  
-
-
-
-
-
-
-
