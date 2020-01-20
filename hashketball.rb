@@ -63,7 +63,7 @@ def hash
        }
        ]
     },
-       :away => {
+     :away => {
      :team_name => "Charlotte Hornets",
      :colors => ["Turquoise", "Purple"],
      :players => [
