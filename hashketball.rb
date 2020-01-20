@@ -196,13 +196,40 @@ def player_stats(players_name)
           if player_hash[:player_name] == players_name
             player_hash.each do |statistic, number|
               new_hash[statistic] = number
-          end
+            end  
+          end  
+        end  
+      end  
+    end  
+  end 
+new_hash.delete(:players_name)
+new_hash
+end
+
+
+def big_shoe_rebounds
+  hash_compare = {}
+  
+  game_hash.each do |team, hash|
+    hash.each do |key, value|
+      if key == :players
+        value.each do |player_hash|
+          hash_compare[player_hash[:players_name]] = players_name[:shoe]
         end
       end
     end
   end
+  max_value = 0
+  key_for_max_value = nil
+  
+  hash_compare.each_pair do |key, value|
+    if value > max_value
+      max_value = value
+      key_for_max_value = key
+    end
+  end
+  return player_stats(key_for_max_value)[:rebounds]
 end
-
 
 
 
