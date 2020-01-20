@@ -194,7 +194,8 @@ def player_stats(players_name)
       if key == :players
         value.each do |player_hash|
           if player_hash[:player_name] == players_name
-            return player_hash[:points]
+            player_hash.each do |statistic, number|
+              new_hash[statistic] = number
           end
         end
       end
