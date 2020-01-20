@@ -231,6 +231,98 @@ def big_shoe_rebounds
   return player_stats(key_for_max_value)[:rebounds]
 end
 
+def most_points_scored
+  points_hash = {}
+  
+  game_hash.each do |team, hash|
+    hash.each do |key, value|
+      if key == :players
+        value.each do |player_hash|
+        points_hash[player_hash[:player_name]] = player_hash[:points]
+        end  
+      end  
+    end  
+  end
+  max_value = 0
+  key_for_max_value = nil
+  
+  points_hash.each_pair do |key, value|
+   if value > max_value
+     max_value = value
+     key_for_max_value = key
+   end   
+  end  
+  return key_for_max_value
+end  
+
+def winning_team
+  total_home_points = []
+  total_away_points = []
+  
+  game_hash[:home][:players].map do |player_hash|
+   total_home_points << player_hash[:points]
+  end
+   home_points = total_home_points.reduce(0) do |total, num|
+     total + num
+   end 
+   
+   game_hash[:away][:players].map do |player_hash|
+     total_away_points << player_hash[:points]
+   end   
+   away_points = total_away_points.reduce(0) do |total, num|
+     total + num
+   end
+   
+   if home_points > away_points
+     return game_hash[:home][:team_name]
+   else
+     return game_hash[:away][:team_name]
+   end   
+end 
+
+def player_with_longest_name
+  players_names_array = []
+  
+  game_hash.each do |team, hash|
+    hash.each do |key, value|
+      if key == :players
+        value.each do |player_hash|
+          players_names_array << player_hash[:player_name]
+        end  
+      end  
+    end  
+  end
+  
+  i = 1
+  longest_name = players_names_array[0]
+  
+  while i < players_names_array.length
+    if players_names_array[i].length > longest_name.length
+      longest_name = players_names_array[i]
+    end 
+    i += 1
+  end
+  longest_name
+end  
+
+def long_name_steals_a_ton?
+  steals = []
+  
+  game_hash.each do |team, hash|
+    hash.each do |key, value|
+      if key == :players 
+        value.each do |player_hash|
+          steals << player_hash[:steals]
+        end  
+      end  
+    end  
+  end 
+  if player_stats(player_with_longest_name)[:steals] >= steals.max
+    return true
+  end
+end  
+
+
 
 
 
