@@ -183,6 +183,23 @@ def player_numbers(team_name)
       end
     end
   end
+  jersey_numbers
+end
+
+def player_stats(players_name)
+  new_hash = {}
+  
+  game_hash.each do |team, hash|
+    hash.each do |key, value|
+      if key == :players
+        value.each do |player_hash|
+          if player_hash[:player_name] == players_name
+            return player_hash[:points]
+          end
+        end
+      end
+    end
+  end
 end
 
 
